@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hs.web.dao.NoticeFileDao">
+
+	<!-- <select id="get" resultType="com.hs.web.dao.entities.NoticeFile">
+	 SELECT * FROM NOTICEFILES WHERE CODE=#{code}
+	</select> -->
+	<select id="getList" resultType="com.hs.web.entities.NoticeFile">
+		SELECT * FROM NOTICEFILES WHERE NOTICECODE =#{noticeCode}
+	</select>
+	
+	<update id ="update" parameterType="com.hs.web.entities.NoticeFile">
+		<!-- 업데이트 -->
+		UPDATE NOTICEFILES SET SRC=#{src}
+		WHERE CODE=#{code}
+	</update>
+	
+	<delete id = "delete">
+		DELETE NOTICEFILES WHERE CODE=#{code}
+	</delete>
+	
+	<insert id="insert" parameterType="com.hs.web.entities.NoticeFile">
+      <selectKey  order="BEFORE" keyProperty="code" resultType="String">
+         SELECT ISNULL(MAX(CAST(CODE AS INT)), 0)+1  AS CODE FROM NOTICEFILES
+      </selectKey>
+      INSERT INTO NOTICEFILES(CODE, SRC, NOTICECODE)
+      VALUES(#{code}, #{src},#{noticeCode})
+   	</insert>
+ 
+</mapper>

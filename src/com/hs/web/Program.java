@@ -1,4 +1,4 @@
-package com.hs.webapp;
+package com.hs.web;
 
 public class Program {
 

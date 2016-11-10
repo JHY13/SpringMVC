@@ -20,6 +20,14 @@
   <description>
      Welcome to Tomcat
   </description>
+  
+  
+<!--   세션팩토리는 바로 깨어났다 -->
+  <!-- <servlet>
+    <servlet-name>nsf</servlet-name>
+    <servlet-class>com.hs.web.dao.mybatis.HsSessionFactoryBuilder</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet> -->
  
  	<servlet>
  		<servlet-name>dispatcher</servlet-name>
