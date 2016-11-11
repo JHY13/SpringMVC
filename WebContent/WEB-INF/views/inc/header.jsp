@@ -17,7 +17,7 @@
 			<!-- 섹션의 제목을 정의하고있는곳이 헤더 -->
 			<header>
 				<h1 id="logo">
-					<img src="${ctx}/images/logo.png" alt="뉴렉처 온라인">
+					<img src="${ctx}/resource/images/logo.png" alt="뉴렉처 온라인">
 				</h1>
 				<section>
 					<h1>헤더</h1>
@@ -63,9 +63,9 @@
 					<nav id="customer-menu">
 						<h1>고객메뉴</h1>
 						<ul>
-							<li><a href=""><img src="${ctx}/images/txt-mypage.png"
+							<li><a href=""><img src="${ctx}/resource/images/txt-mypage.png"
 									alt="마이페이지"></a></li>
-							<li><a href="${ctx}/customer/notice"><img src="${ctx}/images/txt-customer.png"
+							<li><a href="${ctx}/customer/notice"><img src="${ctx}/resource/images/txt-customer.png"
 									alt="고객센터"></a></li>
 						</ul>
 					</nav>

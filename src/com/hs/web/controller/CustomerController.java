@@ -2,12 +2,16 @@ package com.hs.web.controller;
 
 
 
+import java.util.Enumeration;
 import java.util.List;
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hs.web.dao.NoticeDao;
 import com.hs.web.dao.NoticeFileDao;
@@ -16,21 +20,28 @@ import com.hs.web.dao.mybatis.MyBatisNoticeFileDao;
 import com.hs.web.entities.Notice;
 import com.hs.web.entities.NoticeFile;
 import com.hs.web.model.NoticeModel;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 //컨트롤러다라고 알려주는것
 @Controller
+@RequestMapping("/customer/*")
 public class CustomerController {
 	
 	@Autowired
 	private NoticeDao noticeDao;
+	@Autowired
 	private NoticeFileDao noticeFileDao;
+	
+	
+	
 	public CustomerController() {
 		/*noticeDao = new MyBatisNoticeDao();
 		noticeFileDao = new MyBatisNoticeFileDao();*/
 	}
 	
 	
-	@RequestMapping("/customer/notice")
+	@RequestMapping("notice")
 	public String notice(Integer p, String t, String q, Model model) {
 		
 	
@@ -59,12 +70,14 @@ public class CustomerController {
 
 		model.addAttribute("list", list);
 		model.addAttribute("count", count);
-
+		
+		/*타일즈를 설정하면 리턴값을 이런식으로 보여줘야한다 ***ioc에 들어가기 때문에 풀 경로를 안써줘도된다 디스패처에서 Resolver해서 이렇게됨*/
+		return "customer.notice";
 		//뷰정보를 주는곳
-		return "/WEB-INF/views/customer/notice.jsp";
+//		return "/WEB-INF/views/customer/notice.jsp";
 	}
 	
-	@RequestMapping("/customer/notice-detail")
+	@RequestMapping("notice-detail")
 	public String noticeDetail(String code, Model model) {
 		/*String _code = request.getParameter("code");*/
 	
@@ -87,14 +100,24 @@ public class CustomerController {
 		model.addAttribute("prev", noticeDao.getPrev(code));
 		model.addAttribute("next", noticeDao.getNext(code));
 		
-		return "/WEB-INF/views/customer/notice-detail.jsp";
+		return "customer.notice-detail";
 	}
-
-	public void noticeReg() {
-
+	@RequestMapping(value="notice-reg", method=RequestMethod.GET)
+	public String noticeReg() {
+		return "customer.notice-reg";
 	}
-
-	public void noticeEdit() {
-
+	@RequestMapping(value="notice-reg", method=RequestMethod.POST)
+	public String noticeReg(Notice notice) {
+		
+		
+		notice.setWriter("hs");
+		noticeDao.insert(notice);
+		
+		/*바로 불러들이는것 리다이렉트로*/
+		return "redirect:notice";
+	}
+	@RequestMapping("notice-edit")
+	public String noticeEdit() {
+		return "customer.notice-edit";
 	}
 }

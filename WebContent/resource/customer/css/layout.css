@@ -1,0 +1,131 @@
+@CHARSET "UTF-8";
+@IMPORT url("../../css/reset.css");
+@IMPORT url("../../css/style.css");
+@IMPORT url("../../css/header.css");
+@IMPORT url("../../css/footer.css");
+@IMPORT url("../../css/aside.css");
+@IMPORT url("visual.css");
+
+/* style.css참조하는 방법 */
+
+/* @IMPORT url("../../css/style.css"); */
+
+
+
+/* body.hidden{
+	
+	display: none;
+}
+body .h--menu > ul > li {
+	float:left;
+}
+body .clearFix{
+	overflow : auto;
+	zoom: 1;
+} */
+
+
+/* #header > div,
+#visual > div,
+#footer > div{
+	
+} */
+ /* 구조변경에 용이한 선택자 */
+ /*---------------------------<<level1>>---------------------------  */
+
+/* -------------------# visual------------------ */
+
+
+#body{
+	/* background: yellow; */
+	min-height: 300px;
+	border-top: 5px solid #8CBA34;
+	margin-top:1px;
+	
+	/* border: 5px solid red; */
+}
+
+/* 여기고쳐야함 */
+#body > .content-container{
+	background: #313131 url("../../images/bg-body.png") repeat-y;
+	position: relative;
+/* 	clearfix */
+	padding-bottom:30px;
+	overflow: auto;
+	zoom: 1;
+	
+
+}
+
+main {
+	/* 방의 크기를 고정시키기 위한것  notice.css의 main에서의 width 빼고하는것 */
+	box-sizing:border-box;
+	min-height: inherit;
+	width:calc(100% - 205px);  /* 755px; */
+	float: left;
+}
+
+#footer{
+	/* background: gray; */
+	min-height: 70px;
+	background: #313131;
+}
+/*---------------------------<<level2>>---------------------------  */
+.content-container{
+	/* background: rgba(255, 128, 192,0.5); */
+	height: inherit;/* 100%; */
+	width : 960px;
+	margin:auto;
+	min-height: inherit;
+	/* margin-left:auto;
+	margin-right:auto; */
+}
+/*---------------------------<<level3>>---------------------------  */
+/* 여러개이기때문에 아이디로 해서 지정해줘야한다 */
+
+/* #sang{
+	
+	position:relative;
+	left:100px;
+	top:50px;
+	bottom:0px;
+	opacity: 0.5;
+	width:600px;
+	height:100px;
+	background: black;
+	border : 3px solid white;
+} */
+
+/* #breadlet{
+	position:absolute;
+	left: 50px;
+	top:50px;
+	border:1px solid yellow;
+	width:200px;
+} */
+
+/* #test{
+	width :250px;
+	height : 150px;
+	overflow: scroll;
+	border : 1px solid red;
+	background: url("../images/logo.png") no-repeat left top;
+	background-size : cover; 
+	background-attachment: contain;
+} */
+
+/* #test{
+   width:250px;
+   height: 150px;
+   overflow: scroll; 넘어가는 것에 대해 scroll을 주겠다
+   border: 1px solid red;
+   background: url("../images/logo.png") no-repeat left top;
+   background-size : cover; 
+   background-attachment: contain;
+} */
+/* main{
+	background : red;
+}
+ *//* a[lang|="ko"]{
+		border:10px pink solid;
+} */

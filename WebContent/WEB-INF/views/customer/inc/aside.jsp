@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!-- pagecontext에 있음 ctx키값 -->   
+<c:set var="ctx">${pageContext.request.contextPath}</c:set>
 
 			<aside id="aside">
 				<h1>고객센터</h1>
@@ -17,11 +19,11 @@
 					<h2>추천사이트</h2>
 					<ul>
 						<li><a href="http://www.answeris.net"><img
-								src="../images/answeris.png" alt="앤서이즈" /></a></li>
+								src="${ctx}/resource/images/answeris.png" alt="앤서이즈" /></a></li>
 						<li><a href="http://www.microsoft.com"><img
-								src="../images/w3c.png" alt="W3C" /></a></li>
+								src="${ctx}/resource/images/w3c.png" alt="W3C" /></a></li>
 						<li><a href="http://www.w3c.org"><img
-								src="../images/microsoft.png" alt="마이크로소프트" /></a></li>
+								src="${ctx}/resource/images/microsoft.png" alt="마이크로소프트" /></a></li>
 					</ul>
 				</nav>
 				<nav>

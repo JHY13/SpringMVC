@@ -1,47 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans   
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context 
-        http://www.springframework.org/schema/context/spring-context.xsd">  
+        http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">  
 	<!-- 이쪽에 어노테이션이있다고 알려주는것 -->
 	<context:component-scan base-package="com.hs.web.controller"></context:component-scan>
 	
-<!-- 	마이바티스 설정 파일을 로드하는 팩토리 객체 생성승을 지시 -->
+	<!-- 마이바티스 설정 파일을 로드하는 팩토리 객체 생성승을 지시 -->
 
 	<bean name="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
-		<property name="url"
-			value="jdbc:sqlserver://dev.newlecture.com:1433;databaseName=newlecture3" />
-		<property name="username" value="jsp" />
-		<property name="password" value="dclass" />
+	class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+	<property name="url"
+		value="jdbc:sqlserver://dev.newlecture.com:1433;databaseName=newlecture3" />
+	<property name="username" value="jsp" />
+	<property name="password" value="dclass" />
 	</bean>
-		<!-- 마이바티스 config.xml 설정 파일을 로드하는 팩토리 객체 생성을 지시 , 매퍼설정 -->
-		<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		  <property name="dataSource" ref="dataSource" />
-		  <property name="mapperLocations" value="classpath:com/hs/web/dao/mybatis/mapper/*.xml" />
-		</bean>
+	<!-- 마이바티스 config.xml 설정 파일을 로드하는 팩토리 객체 생성을 지시 , 매퍼설정 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations"
+			value="classpath:com/hs/web/dao/mybatis/mapper/*.xml" />
+	</bean>
+
+	<!-- commit close 해주는 작업을 여기에 쓸것이다 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
+	</bean>
+
+	<bean name="noticeDao" class="com.hs.web.dao.mybatis.MyBatisNoticeDao">
+		<property name="sqlSession" ref="sqlSession"></property>
+	</bean>
+	
+	<bean name="noticeFileDao" class="com.hs.web.dao.mybatis.MyBatisNoticeFileDao">
+		<property name="sqlSession" ref="sqlSession"></property>
+	</bean>
+	
+	<bean name="memberDao" class="com.hs.web.dao.mybatis.MyBatisMemberDao">
+		<property name="sqlSession" ref="sqlSession"></property>
+	</bean>
+	
+	
+	<!-- ****타일즈 설정****에 대한 객체를 여기서 만듬 깨운것은 아님 -->
+	<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions" value="/WEB-INF/tiles.xml" />
+	</bean>
 		
-		<!-- commit close 해주는 작업을 여기에 쓸것이다 -->
-		 <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-      	<constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
-   		</bean>
-   		
-		<bean name="noticeDao" class="com.hs.web.dao.mybatis.MyBatisNoticeDao">
-			<property name="session" ref="sqlSession"></property>
-		</bean>
+	<!-- 리절브를 해야 컨트롤단에서 리턴값을 줘서 뷰를 보여줄 수 있다. -->
+	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+       <property name="viewClass"  value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+       <property name="order"  value="1"/>
+    </bean>	
 		
+		<!-- 경로로 리턴해도 찾기 위한 설정 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+      <property name="prefix"  value="/WEB-INF/views/"/>
+      <property name="suffix" value=".jsp" />
+<!--       오더로 위에거와 누가 먼저 되는지 알게해주는것을 하기위해 order를 한다-->
+      <property name="order"  value="2"/>
+   </bean>  
+   <!-- 리소스를 위한 예외 디렉토리 설정 어노테이션으로 설정한 부분을 냅둬라 --> 	
+   <mvc:annotation-driven />
+	<mvc:resources location="/resource/" mapping="/resource/**"></mvc:resources>		
+</beans>
 		
-		<!-- 네임은 여러개 쓸 수 있다 name=속에 -->
-		<!-- id를 쓰면 다른데서 절대못쓰게할 때쓰고 name은 중복을 쓸 수 있고 나중에 골라서 쓸 수 있다 (임포트처럼) -->
-		<!-- <bean name="b"  class="com.hs.web.B" /> -->
-		<!-- A a = new A(); 위 형식과 같다 -->
-		<!-- <bean name="a"  class="com.hs.web.A" > -->
-			<!-- b는 setB와 같다 -->
-		<!-- 	<property name="b" ref="b" />
+		<!-- 네임은 여러개 쓸 수 있다 name=속에
+		id를 쓰면 다른데서 절대못쓰게할 때쓰고 name은 중복을 쓸 수 있고 나중에 골라서 쓸 수 있다 (임포트처럼)
+		<bean name="b"  class="com.hs.web.B" />
+		A a = new A(); 위 형식과 같다
+		<bean name="a"  class="com.hs.web.A" >
+			b는 setB와 같다
+			<property name="b" ref="b" />
 		</bean>
 		
 		<bean name="n" class="com.hs.web.entities.Notice" >
@@ -49,6 +84,3 @@
 		</bean>
 		 -->
 			
-			
-		
-</beans>

@@ -1,0 +1,474 @@
+@CHARSET "UTF-8";
+
+/* 바디 전체를 설정하는건 여기서 하는게 좋다 */
+
+body{
+	font-family: "돋음", Arial, sans-serif;
+	font-size: 11px;
+	color: #979797;
+}
+
+/* 히든은 잘못하면 다른게 사라져서 바디속에한다 */
+body .hidden{
+	display: none;	
+}
+
+body .main{
+	/* height: inherit; */
+	padding-left: 35px;
+	padding-top: 45px;
+	/* width: 720px; */
+}
+
+body .main-title{
+	font-style: "맑은고딕", 고딕, san-serif;
+	font-size: 21px;
+	font-weight: bold;
+	color: #646464;
+	padding-left: 25px;
+	background: url("../images/icon-main-title.png") no-repeat; 
+}
+/* 홈,고객센터 공지사항(공지사항에 있는거 ) */
+body .breadcrumb{
+	display: inline-block;
+	font-family: "돋음", Arial, sans-serif;
+   font-size:11px;
+   color:#979797;
+}
+
+body .breadcrumb > ul{
+	overflow: auto;
+}
+
+body .breadcrumb ul > li{
+	float: left;
+	padding-left:10px;
+	background: url("../images/icon-path.png") no-repeat left center;
+}
+body .breadcrumb ul > li:FIRST-CHILD{
+	padding-left:20px;
+	background: url("../images/icon-home.png") no-repeat left center;
+	
+}
+/* --------------------구조를 이용한 스타일------------------------ */
+body .main-top-border{
+	border-top: 2px solid #8cba35;
+}
+/* ----------table----------------------------------- */
+body .table{
+	width: 100%;
+}
+
+body .table tr{
+	height: 33px;
+	line-height: 33px;	
+}
+
+
+body .table th,
+body .table td{
+	border-bottom: 1px solid #e9e9e9;
+	text-align: center;
+}
+/* -------------table list--------------------- */
+body .table-list thead tr:FIRST-CHILD {
+	
+	background: #f5f5f5;		
+}
+
+body .table-list thead th{
+	background: url("../images/bg-title-sp.png") no-repeat left center;
+		
+}
+
+body .table-list thead th:FIRST-CHILD{
+	background: none;
+		
+}
+
+
+
+/* 번호 크기를 고정적으로 픽셀정하기 위해서 퍼센트로하려면 2-20하면 20분의 2를 차지하게 한다. 밑에는 픽셀로 */
+body .table-list thead th:FIRST-CHILD{
+	width: 60px;
+}
+body .table-list td:FIRST-CHILD+td{
+	text-align: left;
+	text-indent: 10px;
+}
+body .margin-top-l {
+	margin-top: 49px;
+}
+
+body .margin-top-n {
+	margin-top: 10px;
+}
+/* body .text-align-left{
+	text-align: left;
+} */
+
+/* body .text-indent{
+	text-indent: 10px;
+} */
+
+
+
+
+/* ----------------------이름을 이용한 스타일------------------ */
+/* body .table-container{
+	border-top: 2px solid #8cba35;
+}
+
+body .table{
+	width:100%;
+}
+
+body .tr{
+	height: 33px;
+	line-height: 33px;
+	
+}
+body .td{
+	border-bottom: 1px solid #e9e9e9;
+
+} */
+
+/* 
+body.hidden{
+	
+	display: none;
+}
+body .h--menu > ul > li {
+	float:left;
+}
+body .clearFix{
+	overflow : auto;
+	zoom: 1;
+}
+
+
+#header > div,
+#visual > div,
+#footer > div{
+	
+}
+ 구조변경에 용이한 선택자
+ ---------------------------<<level1>>--------------------------- 
+#header{
+	height: 70px;
+}
+헤더숨기는것
+#header header > section > h1 {
+	display: none;
+}
+
+#header .content-container{
+	position: relative;
+}
+
+#logo{
+	
+	position: absolute;
+	left:0px;
+	top:23px;
+}
+
+
+---------------------#main-menu-----------------------------------------
+
+#main-menu {
+	font-family: "맑은 고딕";
+	font-weight: bold;
+	font-size: 15px;
+	color: #000;
+	display: inline-block;
+	
+	position: absolute;
+	left : 200px;
+	top:27px;
+	overflow: auto;
+	
+}
+
+#main-menu a{
+	color: #000;
+	text-decoration: none;
+}
+#main-menu a:hover {
+	color: #ff6100;
+	text-decoration: underline;
+}
+
+
+#main-menu > h1{
+	display: none;
+}
+
+#main-menu > ul{
+	overflow: auto;
+	border: 1px solid red;
+}
+
+#main-menu > ul > li{
+	
+	float: left;
+	패딩 학습과정 뉴렉처 뉴렉과정 강좌선택 부분 테두리
+	background: url("../images/bg-main-menu-vsp.png") no-repeat 13px center;
+	padding-left: 24px;
+}
+first child 형제가 있다면 첫번째 장손이야?하고 물어보는거임
+#main-menu > ul > li:first-child{
+	padding-left: 0px;
+	background: none;
+}
+---------------------#search form-------------
+#search-form{
+	border:5px solid #8cba34;
+	display: inline-block;
+	position: absolute;
+	left:468px;
+	top : 23px;
+}
+
+#search-form h1,
+#search-form > form > fieldset > legend{
+	display: none;
+}
+
+
+#search-form label{
+	
+	height: 25px;
+	line-height:25px;	
+	display: block;
+	float: left;
+	
+	font-family: "고딕",Arial,sans-serif;
+	font-size: 11px;
+	font-weight:bold;
+	color: #979797;
+	background: #ffffff;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+#search-form [type="text"]{
+	
+	height: 25px;
+	border: 0px;
+	display: block;
+	float: left;
+}
+
+#search-form input[type=submit]{
+	background: blue url("../images/btn-zoom.png") no-repeat center;
+	width:31px;
+	height:25px;
+	border: 0px;
+	간격버려졌을대 이걸해줘야한다 검색 아이콘은 마치 사진처럼되어서 위로 올라가진다.
+	vertical-align: middle;
+	display: block;
+	float: left;
+	border-left: 1px solid #8cba34;
+	
+	text-indent: -999px;
+	
+	
+}
+
+--------------------#member-menu---------------------------------
+
+#member-menu{
+	
+	패딩을 하는곳 글자가 써진곳까지 테두리를 맞춰준다.
+	display: inline-block;
+	font-family: "맑은 고딕","고딕",sans-serif;
+	font-weight: bold;
+	font-size: 10px;
+	
+	position: absolute;
+	right: 0px;
+	top: 20px;
+}
+
+#member-menu a{
+	color: #979797;
+
+	밑줄 없애는 곳
+	text-decoration: none;
+}
+
+#member-menu a:hover {
+	color: #ff6100;
+	text-decoration: underline;
+}
+
+#member-menu > h1{
+	display: none;
+}
+
+#member-menu > ul{
+	
+	overflow: auto;
+}
+
+#member-menu > ul > li{
+	float: left;
+	padding-left: 9px;
+	background:url("../images/bg-member-menu-sp.png") no-repeat 5px center;	
+	
+}
+
+#member-menu > ul > li:FIRST-CHILD{
+	padding-left: 0px;
+	background: none;
+	
+}
+------------------------------------#customer menu----
+#customer-menu{
+	position: absolute;
+	right: 0;
+	top:40px
+}
+
+#customer-menu > h1{
+	display: none;
+}
+#customer-menu > ul > li{
+	float: left;
+}
+-------------------# visual------------------
+#visual{
+	background: rgb(50%,100%,50%); #00ff00;
+	
+	height:171px;
+	no-repeat해야 반복되지않는다 아니면 반복됨.
+	background: #313131 url("../images/bg-visual.png") no-repeat center;
+	background-size:3000px 171px;
+	border-top: 3px solid #8CBA34;
+	border: 5px solid black;
+}
+
+#visual .content-container{
+	background: #313131 url("../images/customer/visual.png") no-repeat center;
+}
+
+#body{
+	background: yellow;
+	min-height: 300px;
+	border-top: 5px solid #8CBA34;
+	margin-top:1px;
+	border: 5px solid red;
+}
+
+#footer{
+	background: gray;
+	height: 70px;
+	background: #313131;
+}
+---------------------------<<level2>>--------------------------- 
+.content-container{
+	background: rgba(255, 128, 192,0.5);
+	height: inherit;100%;
+	width : 960px;
+	margin:auto;
+	margin-left:auto;
+	margin-right:auto;
+}
+---------------------------<<level3>>--------------------------- 
+여러개이기때문에 아이디로 해서 지정해줘야한다
+#aside{
+	min-height: inherit;
+	width:205px;
+	background:red;
+	float : left;	
+	background:url("../images/bg-aside-title.png") no-repeat right top;
+	border: 5px solid black;
+}
+
+#aside > h1{
+	font-size: 24px;
+	font-family: "맑은 고딕";
+	font-weight: bold;
+	color: black;
+}
+
+#aside > h2 >li{
+	
+	line-height: 26px;
+}
+
+main{
+	min-height: inherit;
+	width:calc(100%-205px);755px;
+	background:blue;
+	float : left;
+	
+}
+
+#body > .content-container{
+	border: 10px solid red;
+	position:relative;
+	background:#313131 url("../images/bg-body.png") repeat-y;
+	
+	
+}
+
+
+.clearfix:after{
+	content:"이것이 나의 클래스다  아캬캬캬캬캬캬";
+	display:block;
+	clear:left;
+}
+
+.clearfix {
+  overflow: auto;
+  zoom: 1;
+}
+
+#sang{
+	
+	position:relative;
+	left:100px;
+	top:50px;
+	bottom:0px;
+	opacity: 0.5;
+	width:600px;
+	height:100px;
+	background: black;
+	border : 3px solid white;
+}
+
+#breadlet{
+	position:absolute;
+	left: 50px;
+	top:50px;
+	border:1px solid yellow;
+	width:200px;
+}
+
+#test{
+	width :250px;
+	height : 150px;
+	overflow: scroll;
+	border : 1px solid red;
+	background: url("../images/logo.png") no-repeat left top;
+	background-size : cover; 
+	background-attachment: contain;
+}
+
+#test{
+   width:250px;
+   height: 150px;
+   overflow: scroll; 넘어가는 것에 대해 scroll을 주겠다
+   border: 1px solid red;
+   background: url("../images/logo.png") no-repeat left top;
+   background-size : cover; 
+   background-attachment: contain;
+}
+main{
+	background : red;
+}
+ *//* a[lang|="ko"]{
+		border:10px pink solid;
+} */

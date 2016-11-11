@@ -8,7 +8,7 @@
 <%-- <section id="search-from"> --%>
 				<h2 class="main-title">공지사항</h2>
 				
-				<div class="breadcrumb">
+				<div class="breadcrumb margin-top-l">
 					<h3 class="hidden">breadlet</h3>
 					<ul>
 						<li>home</li>
@@ -16,8 +16,8 @@
 						<li>공지사항</li>
 					</ul>
 				</div>
-
-				<div>
+			
+				<div class="margin-top-n">
 					<h3 class="hidden">공지사항 검색 폼</h3>
 					<form action="notice" method="get">
 		<fieldset>
@@ -107,23 +107,24 @@
 						</tbody>
 					</table>
 				</div> --%>
-					<div class="table-container">
+				<!-- 테이블 위에 녹색 색깔 나오게하는것 -->
+					<div class="main-top-border margin-top-n">
 					<h3 class="hidden">공지사항 목록</h3>
-					<table class="table">
+					<table class="table table-list">
 						<thead>
-							<tr class="tr">
-								<td class="td">번호</td>
-								<td class="td">제목</td>
-								<td class="td">작성자</td>
-								<td class="td">작성일</td>
-								<td class="td">조회수</td>
+							<tr>
+								<th>번호</th>
+								<th>제목</th>
+								<th>작성자</th>
+								<th>작성일</th>
+								<th>조회수</th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach var="n" items="${list}">
 								<tr class="tr">
 									<td class="td">${n.code}</td>
-									<td class="td"><a href="notice-detail?code=${n.code}">${n.title}</a></td>
+									<td class="text-align-left text-indent"><a href="notice-detail?code=${n.code}">${n.title}</a></td>
 									<td class="td">${n.writer}</td>
 									<td class="td"><fmt:formatDate pattern="yyyy-MM-dd"
 											value="${n.regDate}" /></td>
@@ -145,9 +146,11 @@
 						</tbody>
 					</table>
 				</div>
+				<div class="margin-top-n">
+				
 					<a href="notice-reg">글쓰기</a>
-
-				<div>
+				</div>
+				<div class="margin-top-n">
 					<h3 class="hidden">현재 페이지</h3>
 					<div>1/3 pages</div>
 				</div>
@@ -170,7 +173,7 @@
 				</div> -->
 	
 			</section>
-			<div>
+			<div class="margin-top-n">
 					<h3 class="hidden">페이저</h3>
 					<s:pager />
 				</div>

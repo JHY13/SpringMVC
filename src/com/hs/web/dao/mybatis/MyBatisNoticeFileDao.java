@@ -11,20 +11,25 @@ import com.hs.web.entities.NoticeFile;
 import com.hs.web.model.NoticeModel;
 
 public class MyBatisNoticeFileDao implements NoticeFileDao {
-	SqlSessionFactory ssf;
+	/*SqlSessionFactory ssf;
 	
 	public  MyBatisNoticeFileDao(){
 		ssf = HsSessionFactoryBuilder.getSqlsessionFactory();
 		
-	}
+	}*/
+	private SqlSession sqlSession;
 	
+	public void setSqlSession(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+
 	@Override
 	public List<NoticeFile> getList(String noticeCode) {
-		SqlSession session = ssf.openSession();
-		NoticeFileDao noticeFileDao = session.getMapper(NoticeFileDao.class);
+//		SqlSession session = ssf.openSession();
+		NoticeFileDao noticeFileDao = sqlSession.getMapper(NoticeFileDao.class);
 		
 		List<NoticeFile> list = noticeFileDao.getList(noticeCode);
-		session.close();
+//		session.close();
 		
 		return list;
 	}
@@ -34,36 +39,36 @@ public class MyBatisNoticeFileDao implements NoticeFileDao {
 
 	@Override
 	public int insert(NoticeFile noticefile) {
-		SqlSession session = ssf.openSession();
-		NoticeFileDao noticeFileDao = session.getMapper(NoticeFileDao.class);
+//		SqlSession session = ssf.openSession();
+		NoticeFileDao noticeFileDao = sqlSession.getMapper(NoticeFileDao.class);
 		
 		int result = noticeFileDao.insert(noticefile);
-		session.commit();
-		session.close();
+//		session.commit();
+//		session.close();
 		
 		return result;
 	}
 
 	@Override
 	public int update(NoticeFile noticefile) {
-		SqlSession session = ssf.openSession();
-		NoticeFileDao noticeFileDao = session.getMapper(NoticeFileDao.class);
+//		SqlSession session = ssf.openSession();
+		NoticeFileDao noticeFileDao = sqlSession.getMapper(NoticeFileDao.class);
 		
 		int result = noticeFileDao.update(noticefile);
-		session.commit();
-		session.close();
+//		sqlSession.commit();
+//		sqlSession.close();
 		
 		return result;
 	}
 
 	@Override
 	public int delete(String code) {
-		SqlSession session = ssf.openSession();
-		NoticeFileDao noticeFileDao = session.getMapper(NoticeFileDao.class);
+//		SqlSession session = ssf.openSession();
+		NoticeFileDao noticeFileDao = sqlSession.getMapper(NoticeFileDao.class);
 		
 		int result = noticeFileDao.delete(code);
-		session.commit();
-		session.close();
+//		session.commit();
+//		session.close();
 		
 		return result;
 	}

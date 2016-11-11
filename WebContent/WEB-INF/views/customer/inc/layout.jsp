@@ -5,6 +5,8 @@
 <%@ taglib prefix="s" tagdir="/WEB-INF/tags"%>
 <!-- 타일즈를 쓰기 위한 명시 -->
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<c:set var="ctx">${pageContext.request.contextPath}</c:set>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,9 +15,9 @@
 <%-- <tiles:getAsString name="css"/> --%>
 
 <!-- css도 레이아웃으로 빼기 위해 -->
-<link href="css/layout.css" type="text/css" rel="stylesheet" />
-<link href="css/<tiles:getAsString name="css"/>" type="text/css" rel="stylesheet" />
-<script src="../js/modernizr-custom.js">
+<link href="${ctx}/resource/customer/css/layout.css" type="text/css" rel="stylesheet" />
+<link href="${ctx}/resource/customer/css/<tiles:getAsString name="css"/>" type="text/css" rel="stylesheet" />
+<script src="${ctx}/resource/js/modernizr-custom.js">
    /* Document.createElement("main") */
 </script>
 

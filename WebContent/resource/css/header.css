@@ -1,0 +1,192 @@
+@CHARSET "UTF-8";
+
+#header{
+	height: 70px;
+}
+/* 헤더숨기는것 */
+#header header > section > h1 {
+	display: none;
+}
+
+#header .content-container{
+	position: relative;
+}
+
+#logo{
+	
+	position: absolute;
+	left:0px;
+	top:23px;
+}
+
+
+/* ---------------------#main-menu----------------------------------------- */
+
+#main-menu {
+	font-family: "맑은 고딕";
+	font-weight: bold;
+	font-size: 15px;
+	color: #000;
+	display: inline-block;
+	
+	position: absolute;
+	left : 200px;
+	top:27px;
+	/* overflow: auto; */
+	
+}
+
+#main-menu a{
+	color: #000;
+	text-decoration: none;
+}
+#main-menu a:hover {
+	color: #ff6100;
+	text-decoration: underline;
+}
+
+
+#main-menu > h1{
+	display: none;
+}
+
+#main-menu > ul{
+	overflow: auto;
+	/* border: 1px solid red; */
+}
+
+#main-menu > ul > li{
+	
+	float: left;
+	/* 패딩 학습과정 뉴렉처 뉴렉과정 강좌선택 부분 테두리 */
+	background: url("../images/bg-main-menu-vsp.png") no-repeat 13px center;
+	padding-left: 24px;
+}
+/* first child 형제가 있다면 첫번째 장손이야?하고 물어보는거임 */
+#main-menu > ul > li:first-child{
+	padding-left: 0px;
+	background: none;
+}
+/* ---------------------#search form------------- */
+#search-form{
+	border:5px solid #8cba34;
+	display: inline-block;
+	overflow: auto;
+	
+	position: absolute;
+	left:468px;
+	top : 21px;
+}
+
+#search-form h1,
+#search-form > form > fieldset > legend{
+	display: none;
+}
+
+
+#search-form label{
+	
+	height: 25px;
+	line-height:25px;	
+	display: block;
+	float: left;
+	
+	font-family: "고딕",Arial,sans-serif;
+	font-size: 11px;
+	font-weight:bold;
+	color: #979797;
+	background: #ffffff;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+#search-form [type="text"]{
+	
+	height: 25px;
+	border: 0px;
+	display: block;
+	float: left;
+}
+
+#search-form input[type=submit]{
+	background: blue url("../images/btn-zoom.png") no-repeat center;
+	width:31px;
+	height:25px;
+	border: 0px;
+/* 	간격버려졌을대 이걸해줘야한다 검색 아이콘은 마치 사진처럼되어서 위로 올라가진다. */
+	vertical-align: middle;
+	display: block;
+	float: left;
+	border-left: 1px solid #8cba34;
+	
+	text-indent: -999px;
+	
+	
+}
+
+/* --------------------#member-menu--------------------------------- */
+
+#member-menu{
+	
+	/* 패딩을 하는곳 글자가 써진곳까지 테두리를 맞춰준다. */
+	display: inline-block;
+	font-family: "맑은 고딕","고딕",sans-serif;
+	font-weight: bold;
+	font-size: 10px;
+	
+	position: absolute;
+	right: 0px;
+	top: 20px;
+}
+
+#member-menu a{
+	color: #979797;
+
+	/* 밑줄 없애는 곳 */
+	text-decoration: none;
+}
+
+#member-menu a:hover {
+	color: #ff6100;
+	text-decoration: underline;
+}
+
+#member-menu > h1{
+	display: none;
+}
+
+#member-menu > ul{
+	
+	overflow: auto;
+}
+
+#member-menu > ul > li{
+	float: left;
+	padding-left: 9px;
+	background:url("../images/bg-member-menu-sp.png") no-repeat 5px center;	
+	
+}
+
+#member-menu > ul > li:FIRST-CHILD{
+	padding-left: 0px;
+	background: none;
+	
+}
+
+/* ------------------------------------#customer menu---- */
+#customer-menu{
+	position: absolute;
+	right: 0px;
+	top:40px;
+	
+}
+/* #customer-menu > ul{
+	overflow: auto;
+} */
+
+#customer-menu > h1{
+	display: none;
+}
+#customer-menu > ul > li{
+	float: left;
+}

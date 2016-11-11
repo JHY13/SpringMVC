@@ -1,0 +1,65 @@
+@CHARSET "UTF-8";
+#aside{
+	width:205px;
+	/* background:red; */
+	float: left;	
+	background:url("../images/bg-aside-title.png") no-repeat;
+	min-height: inherit;
+	/* border: 5px solid black; */
+}
+
+#aside > h1 {
+	font-size: 24px;
+	font-family: "맑은 고딕";
+	font-weight: bold;
+	color: black;
+	line-height: 120px;
+}
+#aside > h2 {
+	display: none;
+}
+
+#aisde-menu > ul > li{
+	height: 26px;
+	line-height: 26px;
+	background: url("../images/bg-aside-menu-hsp.png") no-repeat bottom;
+}
+
+#aisde-menu > ul > li > a{
+	text-decoration: none;
+	color: black;
+	padding-left: 26px;
+}
+#aisde-menu > ul > li > a:HOVER{
+	padding-left: 26px;
+	background: url("../images/icon-current.png") no-repeat 15px center;
+}
+
+
+/* main{
+	min-height: inherit;
+	width:calc(100%-205px);755px;
+	background:blue;
+	float : left;
+	
+} */
+
+/* #body > .content-container{
+	border: 10px solid red;
+	position:relative;
+	background:#313131 url("../../images/bg-body.png") repeat-y;
+	
+	
+} */
+
+
+/* .clearfix:after{
+	content:"이것이 나의 클래스다  아캬캬캬캬캬캬";
+	display:block;
+	clear:left;
+} */
+
+.clearfix {
+  overflow: auto;
+  zoom: 1;
+}

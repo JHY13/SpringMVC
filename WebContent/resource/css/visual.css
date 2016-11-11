@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+#visual{
+	/* background: rgb(50%,100%,50%); #00ff00; */
+	
+	height:171px;
+/* 	no-repeat해야 반복되지않는다 아니면 반복됨. */
+	background: #313131 url("../images/bg-visual.png") no-repeat center;
+	border-top: 3px solid #8CBA34;
+	/* border: 5px solid black; */
+}
+
+.content-container{
+	/* background: rgba(255, 128, 192,0.5); */
+	height: inherit;/* 100%; */
+	width : 960px;
+	margin:auto;
+	min-height: inherit;
+	/* margin-left:auto;
+	margin-right:auto; */
+}
+
