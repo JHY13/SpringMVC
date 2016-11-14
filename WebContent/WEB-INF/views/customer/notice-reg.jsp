@@ -11,7 +11,7 @@
 	
 	<!-- application/x-www-form-urlencoded 문자열만 가능 -->
 													<!-- 멀티파트 파일업로드 -->
-	<form action="notice-reg" method="post" >
+	<form action="notice-reg" method="post" enctype="multipart/form-data">
       <fieldset>
          <legend> 공지사항 수정정보 필드</legend>
          <table border="1">
@@ -31,6 +31,7 @@
                <tr>
                <td>첨부파일</td>
                   <td><input type="file" name="file" /></td>
+                  
                </tr>
              
                <tr>

@@ -1,13 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<h1>수정페이지</h1>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+	<h2>수정페이지</h2>
 	<form action="notice-edit" method="post">
       <fieldset>
          <legend> 로그인 필드</legend>
@@ -29,7 +24,12 @@
                </tr>
                <tr>
                   <td>첨부파일</td>
-                  <td colspan="3"></td>
+                  <td colspan="3">
+                  <c:forEach items="${files}" var="f">
+                  	<span>${f.src}</span>
+                  	<a href="notice-file-del?code=${f.code}&ncode=${n.code}">[X]</a>
+                  </c:forEach>
+                  </td>
                </tr>
                <tr>
                   <td colspan="4"><textarea name="content" rows="20" clos="60">${n.content}</textarea></td>
@@ -43,5 +43,3 @@
          </div>
       </fieldset>
    </form>
-</body>
-</html>
